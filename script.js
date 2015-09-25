@@ -16,5 +16,14 @@ footballApp.controller('PlayerListCtrl', ['$scope','$http',
     $http.get('data/players.json').success(function(data) {
       $scope.players = data;
     });
+
+    $scope.getDisplayPosition = function(number) {
+      switch(number) {
+        case "0": return "goalkeeper";
+        case "1": return "defender";
+        case "2": return "midfielder";
+        case "3": return "forward";
+      }
+    };
   }]
 )
