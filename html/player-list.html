@@ -4,8 +4,10 @@
         <div class="form-inline">
           <input class="form-control" placeholder="Search..." ng-model="search">
           <button class="btn btn-default" ng-click="search=''">Clear</button>
-          <select class="form-control" name="" id="">
-            <option value=""></option>
+          <select class="form-control" ng-model="order" >
+            <option ng-repeat="field in orderFields" value="{{field.value}}">
+              {{field.display}}
+            </option>
           </select>
         </div>
     </div>
@@ -23,7 +25,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="player in filteredPlayers = (players | filter:search)">
+      <tr ng-repeat="player in filteredPlayers = (players | filter:search | orderBy:order)">
         <td>{{player.name}}</td>
         <td>{{player.lastname}}</td>
         <td>{{player.club}}</td>

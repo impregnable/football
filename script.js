@@ -17,6 +17,15 @@ footballApp.controller('PlayerListCtrl', ['$scope','$http',
       $scope.players = data;
     });
 
+    $scope.order = "name";
+
+    $scope.orderFields = [
+      { value: "name", display: "By Name" },
+      { value: "lastname", display: "By Lastname" },
+      { value: "club", display: "By Club" },
+      { value: "country", display: "By Country" },
+    ];
+
     $scope.getDisplayPosition = function(number) {
       switch(number) {
         case "0": return "goalkeeper";
