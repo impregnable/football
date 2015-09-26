@@ -1,0 +1,18 @@
+.players-table th {
+  cursor: pointer;
+  }
+.players-table th:hover {
+  background-color: #EEE;
+}
+.players-table .goalkeeper {
+  color: #F44;
+}
+.players-table .defender {
+  color: #E5A;
+}
+.players-table .midfielder {
+  color: #B7E;
+}
+.players-table .forward {
+  color: #C2B;
+}

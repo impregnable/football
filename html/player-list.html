@@ -13,25 +13,25 @@
     </div>
 
   </div>
-  <table ng-show="filteredPlayers.length" class="table table-hover">
+  <table ng-show="filteredPlayers.length" class="table table-hover players-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Last name</th>
-        <th>Club</th>
-        <th>Birthdate</th>
-        <th>Country</th>
-        <th>Position</th>
+        <th ng-click="order='name'">Name <span ng-if="order == 'name'">*</span></th>
+        <th ng-click="order='lastname'">Last name <span ng-if="order == 'lastname'">*</span></th>
+        <th ng-click="order='club'">Club <span ng-if="order == 'club'">*</span></th>
+        <th ng-click="order='birthdate'">Birthdate <span ng-if="order == 'birthdate'">*</span></th>
+        <th ng-click="order='country'">Country <span ng-if="order == 'country'">*</span></th>
+        <th ng-click="order='position'">Position <span ng-if="order == 'position'">*</span></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="player in filteredPlayers = (players | filter:search | orderBy:order)">
-        <td>{{player.name}}</td>
+        <td><a href="#/players/{{player.id}}">{{player.name}}</a></td>
         <td>{{player.lastname}}</td>
         <td>{{player.club}}</td>
         <td>{{player.birthdate}}</td>
         <td>{{player.country}}</td>
-        <td>{{getDisplayPosition(player.position)}}</td>
+        <td ng-class="getPositionClass(player.position)">{{getDisplayPosition(player.position)}}</td>
       </tr>
     </tbody>
   </table>

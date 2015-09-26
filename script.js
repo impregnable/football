@@ -28,6 +28,15 @@ footballApp.controller('PlayerListCtrl', ['$scope','$http',
 
     $scope.getDisplayPosition = function(number) {
       switch(number) {
+        case "0": return "Goalkeeper";
+        case "1": return "Defender";
+        case "2": return "Midfielder";
+        case "3": return "Forward";
+      }
+    };
+
+    $scope.getPositionClass = function(number) {
+      switch(number) {
         case "0": return "goalkeeper";
         case "1": return "defender";
         case "2": return "midfielder";
