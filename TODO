@@ -1,8 +1,5 @@
-Add checkboxes with position types to the header
-[x] show goalkeepers [ ] show defenders [x] show midfielders [ ] show forwards
-
-Highlight sorting header
-
-Player details page
-
-Club details page
+- Commit
+- Separate project by folders (client, server)
+- Commit
+- Create two sql scripts (create db & create table players; seed table players with data)
+- Execute sql scripts (mysql <db_name> < file.sql -uroot -proot)
