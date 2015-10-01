@@ -1,0 +1,28 @@
+<div id="container">
+  <div>
+    <img ng-src="{{mainImageUrl}}" class="player">
+    <ul class="player-pictures">
+      <li ng-repeat="img in player.images">
+        <img ng-src="{{img}}" ng-click="setImage(img)">
+      </li>
+    </ul>
+  </div>
+
+  <div>
+    <h1>{{player.name}} {{player.lastname}}</h1>
+    <div>{{player.description1}}</div>
+    <div>{{player.description2}}</div>
+    <div>{{player.description3}}</div>
+    <ul>
+      <h3>Main individual awards</h3>
+      <li>
+        <span>Ballon d’Or</span>
+        <dd>{{player.goldenball}}</dd>
+      </li>
+      <li>
+        <span>Golden Shoe</span>
+        <dd>{{player.goldenshoe}}</dd>
+      </li>
+    </ul>
+  </div>
+</div>

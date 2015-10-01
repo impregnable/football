@@ -6,14 +6,31 @@ footballApp.config(['$routeProvider', function($routeProvider) {
     templateUrl: 'html/player-list.html',
     controller: 'PlayerListCtrl'
   }).
+  when('/players/:playerId', {
+    templateUrl: 'html/player-detail.html',
+    controller: 'PlayerDetailCtrl'
+  }).
   otherwise({
     redirectTo: '/players'
   });
 }]);
 
+footballApp.controller('PlayerDetailCtrl', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+    $http.get('data/json/' + $routeParams.playerId + '.json').success(function(data) {
+      $scope.player = data;
+      $scope.mainImageUrl = data.images[0];
+    });
+
+    $scope.setImage = function(ImageUrl) {
+      $scope.mainImageUrl = ImageUrl;
+    };
+  }]
+)
+
 footballApp.controller('PlayerListCtrl', ['$scope','$http',
   function($scope, $http) {
-    $http.get('data/players.json').success(function(data) {
+    $http.get('data/json/players.json').success(function(data) {
       $scope.players = data;
     });
 
