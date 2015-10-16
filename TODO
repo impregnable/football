@@ -1,5 +1,4 @@
-- Commit
-- Separate project by folders (client, server)
-- Commit
-- Create two sql scripts (create db & create table players; seed table players with data)
-- Execute sql scripts (mysql <db_name> < file.sql -uroot -proot)
+- Change frontend to work properly with backend
+- Add moment.js to frontend (bower install with --save)
+- Instead of raw date, display formatted date in players list. Use Angular filters for conversion.
+- Separate controllers, services and apps
