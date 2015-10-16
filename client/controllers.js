@@ -1,21 +1,6 @@
-var footballApp = angular.module('football', ['ngRoute', 'footballAppFilters']);
+var footballControllers = angular.module('footballControllers', []);
 
-footballApp.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.
-  when('/players', {
-    templateUrl: 'html/player-list.html',
-    controller: 'PlayerListCtrl'
-  }).
-  when('/players/:playerId', {
-    templateUrl: 'html/player-detail.html',
-    controller: 'PlayerDetailCtrl'
-  }).
-  otherwise({
-    redirectTo: '/players'
-  });
-}]);
-
-footballApp.controller('PlayerDetailCtrl', ['$scope', '$routeParams', '$http',
+footballControllers.controller('PlayerDetailCtrl', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
     $http.get('/players/' + $routeParams.playerId).success(function(data) {
       $scope.player_id = data;
@@ -28,7 +13,7 @@ footballApp.controller('PlayerDetailCtrl', ['$scope', '$routeParams', '$http',
   }]
 )
 
-footballApp.controller('PlayerListCtrl', ['$scope','$http',
+footballControllers.controller('PlayerListCtrl', ['$scope','$http',
   function($scope, $http) {
     $http.get('/players').success(function(data) {
       $scope.players = data;
