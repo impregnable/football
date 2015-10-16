@@ -2,8 +2,8 @@
   <div class="panel panel-success">
     <div class="panel-body">
         <div class="form-inline">
-          <input class="form-control" placeholder="Search..." ng-model="search">
-          <button class="btn btn-default" ng-click="search=''">Clear</button>
+          <input class="form-control" placeholder="Search..." ng-model="query">
+          <button class="btn btn-default" ng-click="query=''">Clear</button>
           <select class="form-control" ng-model="order" >
             <option ng-repeat="field in orderFields" value="{{field.value}}">
               {{field.display}}
@@ -16,22 +16,22 @@
   <table ng-show="filteredPlayers.length" class="table table-hover players-table">
     <thead>
       <tr>
-        <th ng-click="order='name'">Name <span ng-if="order == 'name'">*</span></th>
-        <th ng-click="order='lastname'">Last name <span ng-if="order == 'lastname'">*</span></th>
-        <th ng-click="order='club'">Club <span ng-if="order == 'club'">*</span></th>
-        <th ng-click="order='birthdate'">Birthdate <span ng-if="order == 'birthdate'">*</span></th>
-        <th ng-click="order='country'">Country <span ng-if="order == 'country'">*</span></th>
-        <th ng-click="order='position'">Position <span ng-if="order == 'position'">*</span></th>
+        <th ng-click="order='player_name'">Name <span ng-if="order == 'player_name'">*</span></th>
+        <th ng-click="order='player_lastname'">Last name <span ng-if="order == 'player_lastname'">*</span></th>
+        <th ng-click="order='player_club'">Club <span ng-if="order == 'player_club'">*</span></th>
+        <th ng-click="order='player_birthdate'">Birthdate <span ng-if="order == 'player_birthdate'">*</span></th>
+        <th ng-click="order='player_nationality'">Nationality <span ng-if="order == 'player_nationality'">*</span></th>
+        <th ng-click="order='player_position'">Position <span ng-if="order == 'player_position'">*</span></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="player in filteredPlayers = (players | filter:search | orderBy:order)">
-        <td><a href="#/players/{{player.id}}">{{player.name}}</a></td>
-        <td>{{player.lastname}}</td>
-        <td>{{player.club}}</td>
-        <td>{{player.birthdate}}</td>
-        <td>{{player.country}}</td>
-        <td ng-class="getPositionClass(player.position)">{{getDisplayPosition(player.position)}}</td>
+        <td><a href="#/players/{{player.player_id}}">{{player.player_name}}</a></td>
+        <td><a href="#/players/{{player.player_id}}">{{player.player_lastname}}</a></td>
+        <td>{{player.player_club}}</td>
+        <td>{{player.player_birthdate | dateConv}}</td>
+        <td>{{player.player_nationality}}</td>
+        <td ng-class="player.player_position">{{player.player_position}}</td>
       </tr>
     </tbody>
   </table>

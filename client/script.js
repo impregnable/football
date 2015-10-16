@@ -1,4 +1,4 @@
-var footballApp = angular.module('football', ['ngRoute']);
+var footballApp = angular.module('football', ['ngRoute', 'footballAppFilters']);
 
 footballApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
@@ -17,8 +17,8 @@ footballApp.config(['$routeProvider', function($routeProvider) {
 
 footballApp.controller('PlayerDetailCtrl', ['$scope', '$routeParams', '$http',
   function($scope, $routeParams, $http) {
-    $http.get('data/json/' + $routeParams.playerId + '.json').success(function(data) {
-      $scope.player = data;
+    $http.get('/players/' + $routeParams.playerId).success(function(data) {
+      $scope.player_id = data;
       $scope.mainImageUrl = data.images[0];
     });
 
@@ -30,35 +30,26 @@ footballApp.controller('PlayerDetailCtrl', ['$scope', '$routeParams', '$http',
 
 footballApp.controller('PlayerListCtrl', ['$scope','$http',
   function($scope, $http) {
-    $http.get('data/json/players.json').success(function(data) {
+    $http.get('/players').success(function(data) {
       $scope.players = data;
     });
 
-    $scope.order = "name";
+    $scope.query = "";
+
+    $scope.order = "player_name";
 
     $scope.orderFields = [
-      { value: "name", display: "By Name" },
-      { value: "lastname", display: "By Lastname" },
-      { value: "club", display: "By Club" },
-      { value: "country", display: "By Country" },
+      { value: "player_name", display: "By Name" },
+      { value: "player_lastname", display: "By Lastname" },
+      { value: "player_club", display: "By Club" },
+      { value: "player_nationality", display: "By Nationality" },
     ];
 
-    $scope.getDisplayPosition = function(number) {
-      switch(number) {
-        case "0": return "Goalkeeper";
-        case "1": return "Defender";
-        case "2": return "Midfielder";
-        case "3": return "Forward";
+    $scope.search = function(item) {
+      if ( (item.player_name.toLowerCase().indexOf($scope.query) != -1) || (item.player_lastname.toLowerCase().indexOf($scope.query) != -1) ) {
+        return true;
       }
-    };
-
-    $scope.getPositionClass = function(number) {
-      switch(number) {
-        case "0": return "goalkeeper";
-        case "1": return "defender";
-        case "2": return "midfielder";
-        case "3": return "forward";
-      }
+      return false;
     };
   }]
 )
