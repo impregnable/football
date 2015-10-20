@@ -1,10 +1,10 @@
 var footballControllers = angular.module('footballControllers', []);
 
-footballControllers.controller('PlayerDetailCtrl', ['$scope', '$routeParams', '$http',
-  function($scope, $routeParams, $http) {
-    $http.get('/players/' + $routeParams.playerId).success(function(data) {
-      $scope.player_id = data;
-      $scope.mainImageUrl = data.images[0];
+footballControllers.controller('PlayerDetailCtrl', ['$scope', '$routeParams', 'Players',
+function($scope, $routeParams, Players) {
+    Players.get($routeParams.playerId).success(function(player) {
+      $scope.player_id = player;
+      $scope.mainImageUrl = player.images[0];
     });
 
     $scope.setImage = function(ImageUrl) {
@@ -13,10 +13,10 @@ footballControllers.controller('PlayerDetailCtrl', ['$scope', '$routeParams', '$
   }]
 )
 
-footballControllers.controller('PlayerListCtrl', ['$scope','$http',
-  function($scope, $http) {
-    $http.get('/players').success(function(data) {
-      $scope.players = data;
+footballControllers.controller('PlayerListCtrl', ['$scope', 'Players',
+function($scope, Players) {
+    Players.all().success(function(players) {
+      $scope.players = players;
     });
 
     $scope.query = "";
