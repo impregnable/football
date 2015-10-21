@@ -1,33 +1,25 @@
 <div id="container">
   <div class="right">
-<div class="imgPicture" style="background-image: url('/data/img/{{mainImageUrl}}')" class="player">
-</div>
-    <ul class="player-pictures">
-      <li ng-repeat="img in player_id.images">
-        <img ng-src="/data/img/{{img}}" ng-click="setImage(img)">
-      </li>
-    </ul>
+    <div class="imgPicture" style="background-image: url('/data/img/{{mainImageUrl}}')" class="player"></div>
+      <ul class="player-pictures">
+        <li ng-repeat="img in player_id.images">
+          <img ng-src="/data/img/{{img}}" ng-click="setImage(img)">
+        </li>
+      </ul>
   </div>
-
   <div class="left">
     <h1>{{player_id.player_name}} {{player_id.player_lastname}}</h1>
-    <div>{{player_id.player_description}}</div>
+    <h4>{{player_id.player_description}}</h4>
   </div>
-
-
-
 </div>
 
-<div id="container1">
-<div class="wtf">
-  <h3> STYLE OF PLAY: </h3>
-  {{player_id.player_style}}
-</div>
-<div class="qtf">
-    <h3> MAIN HONOURS: </h3>
-  ainane ainane ainane ainane ainane ainane ainane ainane ainane ainane ainane ainane 
-</div>
-
-
-
+<div id="container">
+  <div class="right drop-shadow raised">
+    <h3>Style of play:</h3>
+    <h4>{{player_id.player_style}}</h4>
+  </div>
+  <div class="left drop-shadow raised">
+    <h3>Primary characteristics which describe {{player_id.player_name}}'s game:</h3>
+    <h4>{{player_id.player_characteristics}}</h4>
+  </div>
 </div>

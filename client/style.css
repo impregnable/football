@@ -21,33 +21,28 @@ h1 {
   font-family: serif;
   font-size: 500%;
   color: #120;
-  }
+}
+
+.right h3, .right h4 {
+  margin: 1em;
+}
+
+.left h3, .left h4 {
+  margin: 1em;
+}
+
 #container {
     display: flex;
     flex-flow: row-reverse;
-
-}
-#container1 {
-    display: flex;
-    flex-flow: row-reverse;
-
+    width: 1200px;
 }
 
-.right {
-  border: solid 1px red;
-}
+.raised {
+   -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
-.left {
-  border: solid 1px blue;
-}
+  -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 
-.wtf {
-  border: solid 1px green;
-
-}
-
-.qtf {
-  border: solid 1px gray;
+   box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
 .imgPicture {
@@ -55,7 +50,7 @@ h1 {
     width: 700px;
     height: 600px;
     overflow: hidden;
-    outline: 3px solid black;
+    outline: 1px solid black;
     margin: 10px;
     background-repeat: no-repeat;
     background-position: 50% 50%;
